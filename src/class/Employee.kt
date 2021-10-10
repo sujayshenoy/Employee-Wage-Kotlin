@@ -3,7 +3,7 @@ package `class`
 import sealedClass.EmployeeType
 import kotlin.math.floor
 
-class Employee(private val empId: Int, private val wagePerHour: Float, private val employeeType: EmployeeType) {
+class Employee(val empId: Int, private val wagePerHour: Float, private val employeeType: EmployeeType) {
     fun isPresent() : Boolean{
         val attendance = ((floor(Math.random()*10))%2).toInt()
         return attendance == 1
