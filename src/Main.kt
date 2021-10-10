@@ -1,4 +1,5 @@
 import `class`.Company
+import `class`.Employee
 
 fun main(args : Array<String>){
     val infosys = Company("Infosys",9,15)
@@ -12,13 +13,14 @@ fun main(args : Array<String>){
     tcs.createRandomEmployee(1)
     tcs.createRandomEmployee(2)
 
-    for( i in infosys.employees){
-        println(i.isPresent())
-    }
-    for( i in capgemini.employees){
-        println(i.isPresent())
-    }
-    for( i in tcs.employees){
-        println(i.isPresent())
-    }
+    infosys.showAttendance()
+    capgemini.showAttendance()
+    tcs.showAttendance()
+
+    val infoEmployee = infosys.getEmployee(2)
+    println(infoEmployee.empId)
+
+    println("Total Wage of Employees(${infosys.name}): ${infosys.getTotalEmployeeWage()}")
+    println("Total Wage of Employees(${capgemini.name}): ${capgemini.getTotalEmployeeWage()}")
+    println("Total Wage of Employees(${tcs.name}): ${tcs.getTotalEmployeeWage()}")
 }

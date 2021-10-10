@@ -4,7 +4,7 @@ import util.EmpType
 import util.EmployeeFactory
 
 
-class Company(private val name: String, private  val workingHoursPerDay:Int, private val workingDaysPerMonth: Int) {
+class Company(val name: String, private  val workingHoursPerDay:Int, private val workingDaysPerMonth: Int) {
     var employees:MutableList<Employee> = mutableListOf<Employee>()
 
     fun createRandomEmployee(id: Int){
@@ -21,5 +21,21 @@ class Company(private val name: String, private  val workingHoursPerDay:Int, pri
         } else {
             EmpType.PART_TIME
         }
+    }
+
+    fun showAttendance() {
+        employees.forEach{
+            println("EmpID: ${it.empId} is ${ if(it.isPresent()) "Present" else "Absent"}")
+        }
+    }
+
+    fun getEmployee (empId: Int) : Employee = employees.first { it.empId == empId }
+
+    fun getTotalEmployeeWage () : Float {
+        var sum = 0f
+        employees.forEach {
+            sum+= it.calculateWage()
+        }
+        return sum
     }
 }
